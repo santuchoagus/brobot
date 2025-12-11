@@ -35,6 +35,7 @@ func main() {
 		panic(err)
 	}
 
+	b.DeleteWebhook(ctx, &bot.DeleteWebhookParams{DropPendingUpdates: true})
 	b.SetMyCommands(ctx, &bot.SetMyCommandsParams{Commands: Commands})
 	RegisterRoutes(b)
 	b.Start(ctx)
