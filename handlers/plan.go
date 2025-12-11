@@ -35,18 +35,17 @@ func HandleFlan(ctx context.Context, b *bot.Bot, update *models.Update) {
 		return
 	}
 
-	file, err := os.Open("assets/flan.png")
-	if err != nil {
-		log.Println("Couldn't not seed file: assets/flan.png", err)
-		return
-	}
+	// file, err := os.Open("assets/flan.png")
+	// if err != nil {
+	// 	log.Println("Couldn't not seed file: assets/flan.png", err)
+	// 	return
+	// }
 
 	b.SendPhoto(ctx, &bot.SendPhotoParams{
 		ChatID:  update.Message.Chat.ID,
 		Caption: "Todavía no hay un grafo de correlativas",
-		Photo: &models.InputFileUpload{
-			Filename: "plan.png",
-			Data:     file,
+		Photo: &models.InputFileString{
+			Data: "AgACAgEAAxkDAAIBDmk6SPa0KE6dmsXMkUcNJJa7J9NmAAIIC2sb2sHZRS5nvwyD1jt2AQADAgADcwADNgQ",
 		},
 	})
 }
