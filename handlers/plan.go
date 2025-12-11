@@ -9,14 +9,14 @@ import (
 	"github.com/go-telegram/bot/models"
 )
 
-func HandlePlan(ctx context.Context, b *bot.Bot, update *models.Update) {
+func HandleFlan(ctx context.Context, b *bot.Bot, update *models.Update) {
 	if update.Message == nil {
 		return
 	}
 
-	file, err := os.Open("assets/plan.jpg")
+	file, err := os.Open("assets/flan.png")
 	if err != nil {
-		log.Println("Couldn't not seed file: assets/plan.jpg", err)
+		log.Println("Couldn't not seed file: assets/flan.png", err)
 		return
 	}
 
@@ -24,22 +24,16 @@ func HandlePlan(ctx context.Context, b *bot.Bot, update *models.Update) {
 		ChatID:  update.Message.Chat.ID,
 		Caption: "Todavía no hay un grafo de correlativas",
 		Photo: &models.InputFileUpload{
-			Filename: "plan.jpg",
+			Filename: "flan.jpg",
 			Data:     file,
 		},
 	})
 }
 
-func HandleFlan(ctx context.Context, b *bot.Bot, update *models.Update) {
+func HandlePlan(ctx context.Context, b *bot.Bot, update *models.Update) {
 	if update.Message == nil {
 		return
 	}
-
-	// file, err := os.Open("assets/flan.png")
-	// if err != nil {
-	// 	log.Println("Couldn't not seed file: assets/flan.png", err)
-	// 	return
-	// }
 
 	b.SendPhoto(ctx, &bot.SendPhotoParams{
 		ChatID:  update.Message.Chat.ID,
